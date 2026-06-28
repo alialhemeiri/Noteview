@@ -1,0 +1,232 @@
+/* ===========================================================================
+   Editor surfaces + shared prose typography (rich / preview / export)
+   =========================================================================== */
+
+/* -------------------------------------------------------- rich editor page */
+.nv-rich-scroll {
+  flex: 1;
+  overflow-y: auto;
+  padding: 28px 20px 80px;
+}
+.nv-rich-page {
+  max-width: 840px;
+  margin: 0 auto;
+  background: var(--chrome-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sm);
+  padding: 52px 64px;
+  min-height: 60vh;
+}
+.nv-rich .ProseMirror {
+  outline: none;
+  min-height: 50vh;
+}
+.nv-rich .ProseMirror p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  color: var(--text-muted);
+  float: inline-start;
+  height: 0;
+  pointer-events: none;
+}
+
+/* ------------------------------------------------------- shared prose body */
+.nv-prose,
+.nv-md-preview,
+.ProseMirror {
+  font-family: var(--font-serif);
+  font-size: calc(17px * var(--zoom, 1));
+  line-height: 1.75;
+  color: var(--text);
+  word-wrap: break-word;
+}
+.nv-prose h1, .nv-md-preview h1, .ProseMirror h1,
+.nv-prose h2, .nv-md-preview h2, .ProseMirror h2,
+.nv-prose h3, .nv-md-preview h3, .ProseMirror h3,
+.nv-prose h4, .nv-md-preview h4, .ProseMirror h4 {
+  font-family: var(--font-ui);
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 1.4em 0 0.5em;
+  letter-spacing: -0.01em;
+}
+.nv-prose h1, .nv-md-preview h1, .ProseMirror h1 { font-size: 1.9em; }
+.nv-prose h2, .nv-md-preview h2, .ProseMirror h2 { font-size: 1.5em; }
+.nv-prose h3, .nv-md-preview h3, .ProseMirror h3 { font-size: 1.25em; }
+.nv-prose h4, .nv-md-preview h4, .ProseMirror h4 { font-size: 1.08em; }
+.nv-prose p, .nv-md-preview p, .ProseMirror p { margin: 0.75em 0; }
+.nv-prose ul, .nv-prose ol,
+.nv-md-preview ul, .nv-md-preview ol,
+.ProseMirror ul, .ProseMirror ol { padding-inline-start: 1.6em; margin: 0.6em 0; }
+.nv-prose li, .nv-md-preview li, .ProseMirror li { margin: 0.25em 0; }
+.nv-prose a, .nv-md-preview a, .ProseMirror a {
+  color: var(--accent-text);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.nv-prose blockquote, .nv-md-preview blockquote, .ProseMirror blockquote {
+  border-inline-start: 3px solid var(--accent);
+  padding-inline-start: 1em;
+  margin: 0.9em 0;
+  color: var(--text-2);
+  font-style: italic;
+}
+.nv-prose hr, .nv-md-preview hr, .ProseMirror hr {
+  border: none;
+  border-top: 1px solid var(--border-strong);
+  margin: 1.6em 0;
+}
+.nv-prose img, .nv-md-preview img, .ProseMirror img {
+  max-width: 100%;
+  border-radius: var(--r-sm);
+}
+.nv-prose code, .nv-md-preview code, .ProseMirror code {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  background: var(--code-bg);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+}
+.nv-prose pre, .nv-md-preview pre, .ProseMirror pre {
+  font-family: var(--font-mono);
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 14px 16px;
+  margin: 0.9em 0;
+  overflow-x: auto;
+  font-size: 0.86em;
+  line-height: 1.6;
+}
+.nv-prose pre code, .nv-md-preview pre code, .ProseMirror pre code {
+  background: none;
+  padding: 0;
+  font-size: inherit;
+}
+
+/* tables */
+.nv-prose table, .nv-md-preview table, .ProseMirror table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1em 0;
+  font-family: var(--font-ui);
+  font-size: 0.92em;
+  overflow: hidden;
+}
+.nv-prose th, .nv-prose td,
+.nv-md-preview th, .nv-md-preview td,
+.ProseMirror th, .ProseMirror td {
+  border: 1px solid var(--border-strong);
+  padding: 7px 11px;
+  text-align: start;
+  vertical-align: top;
+}
+.nv-prose th, .nv-md-preview th, .ProseMirror th {
+  background: var(--surface-2);
+  font-weight: 600;
+}
+.ProseMirror .selectedCell { background: var(--accent-soft); }
+.ProseMirror .column-resize-handle {
+  position: absolute;
+  right: -2px;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--accent);
+}
+
+/* task lists */
+.nv-prose ul[data-type="taskList"], .ProseMirror ul[data-type="taskList"],
+.nv-md-preview ul.contains-task-list { list-style: none; padding-inline-start: 0.4em; }
+.ProseMirror ul[data-type="taskList"] li { display: flex; gap: 0.5em; align-items: flex-start; }
+.ProseMirror ul[data-type="taskList"] li > label { margin-top: 0.35em; }
+.nv-md-preview li.task-list-item { list-style: none; }
+
+/* -------------------------------------------------------------- math nodes */
+.nv-math { cursor: pointer; border-radius: 4px; }
+.nv-math-inline { display: inline-block; padding: 0 1px; }
+.nv-math-block { display: block; text-align: center; margin: 0.8em 0; overflow-x: auto; }
+.nv-math:hover { background: var(--accent-soft); }
+.nv-math.editing { display: block; }
+.nv-math-empty { color: var(--text-muted); font-style: italic; font-family: var(--font-mono); font-size: 0.85em; }
+.nv-math-error { color: var(--danger); font-family: var(--font-mono); }
+.nv-math-input {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  width: 100%;
+  min-width: 220px;
+  padding: 6px 8px;
+  border: 1px solid var(--accent);
+  border-radius: var(--r-sm);
+  background: var(--surface-2);
+  color: var(--text);
+  resize: vertical;
+}
+.katex { font-size: 1.05em; }
+.katex-display { margin: 0; overflow-x: auto; overflow-y: hidden; padding: 2px 0; }
+
+/* auto direction: each block resolves its own base direction */
+.ProseMirror.doc-auto-dir > *,
+.nv-md-preview[dir="auto"] > * { unicode-bidi: plaintext; }
+
+/* ----------------------------------------------------------- markdown mode */
+.nv-md {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+  width: 100%;
+}
+.nv-md-source {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  background: var(--chrome-bg);
+}
+.nv-md-source .cm-editor { height: 100%; font-size: calc(13px * var(--zoom, 1)); }
+.nv-md-divider { width: 1px; background: var(--border); flex-shrink: 0; }
+.nv-md-preview {
+  flex: 1;
+  min-width: 0;
+  overflow-y: auto;
+  padding: 28px 40px 80px;
+  background: var(--app-bg);
+}
+.nv-md[data-view="source"] .nv-md-source,
+.nv-md[data-view="preview"] .nv-md-preview { flex: 1 1 100%; }
+
+/* ------------------------------------------------------------- plain editor */
+.nv-plain {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  resize: none;
+  border: none;
+  outline: none;
+  background: var(--app-bg);
+  color: var(--text);
+  padding: 22px 28px;
+  line-height: 1.7;
+  tab-size: 4;
+}
+
+/* ----------------------------------------------- highlight.js (token theme) */
+.hljs-comment, .hljs-quote { color: var(--text-muted); font-style: italic; }
+.hljs-keyword, .hljs-selector-tag, .hljs-literal, .hljs-name { color: #c026d3; }
+.hljs-string, .hljs-attr, .hljs-template-tag, .hljs-addition { color: #16a34a; }
+.hljs-number, .hljs-built_in, .hljs-builtin-name, .hljs-type { color: #d97706; }
+.hljs-title, .hljs-section, .hljs-function .hljs-title { color: #2563eb; }
+.hljs-variable, .hljs-regexp, .hljs-meta { color: #0891b2; }
+.hljs-symbol, .hljs-bullet, .hljs-link { color: #db2777; }
+.hljs-deletion { color: var(--danger); }
+[data-theme="dark"] .hljs-keyword, [data-theme="dark"] .hljs-selector-tag, [data-theme="dark"] .hljs-literal, [data-theme="dark"] .hljs-name { color: #e879f9; }
+[data-theme="dark"] .hljs-string, [data-theme="dark"] .hljs-attr, [data-theme="dark"] .hljs-addition { color: #4ade80; }
+[data-theme="dark"] .hljs-number, [data-theme="dark"] .hljs-built_in, [data-theme="dark"] .hljs-type { color: #fbbf24; }
+[data-theme="dark"] .hljs-title, [data-theme="dark"] .hljs-section { color: #60a5fa; }
+[data-theme="dark"] .hljs-variable, [data-theme="dark"] .hljs-regexp, [data-theme="dark"] .hljs-meta { color: #22d3ee; }
+[data-theme="dark"] .hljs-symbol, [data-theme="dark"] .hljs-bullet, [data-theme="dark"] .hljs-link { color: #f472b6; }
+
+/* --------------------------------------------------------------- print/export */
+.nv-export { color: #000; background: #fff; padding: 0; font-family: var(--font-serif); }
+@media print {
+  .nv-export { font-size: 12pt; }
+}

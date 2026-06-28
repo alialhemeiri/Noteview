@@ -1,0 +1,42 @@
+name: CI
+
+# Runs the same gate we use locally (type-check + frontend build + cargo check)
+# on a clean Windows machine, on every push and PR to main. A green check here
+# means the code actually compiles independently of any one dev's machine.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-check:
+    name: Type-check + cargo check
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: app/src-tauri
+
+      - name: Install frontend deps
+        working-directory: app
+        run: npm ci
+
+      - name: Type-check + build frontend (tsc && vite build)
+        working-directory: app
+        run: npm run build
+
+      - name: cargo check (Rust backend)
+        working-directory: app/src-tauri
+        run: cargo check

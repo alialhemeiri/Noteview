@@ -1,0 +1,34 @@
+[package]
+name = "noteview"
+version = "0.1.0"
+description = "Noteview — a modern Markdown-first editor"
+authors = ["Aperion"]
+edition = "2021"
+
+[lib]
+# The `_lib` suffix keeps the lib name distinct from the bin name (needed on Windows).
+name = "noteview_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-opener = "2"
+tauri-plugin-dialog = "2"
+tauri-plugin-single-instance = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+encoding_rs = "0.8"
+base64 = "0.22.1"
+# URL scheme validation for `open_external` (F-03). Already in the tree
+# transitively via Tauri; declared here as a direct dependency.
+url = "2"
+
+[profile.release]
+panic = "abort"
+codegen-units = 1
+lto = true
+opt-level = "s"
+strip = true

@@ -1,0 +1,115 @@
+/* ============================================================================
+   Noteview design tokens
+   A calm, modern, neutral editor palette (intentionally NOT a brand identity).
+   Light + dark are hand-tuned, not inverted greys.
+   ========================================================================== */
+
+:root {
+  /* Typography */
+  --font-ui: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-serif: "Lora", "Libre Baskerville", Georgia, "Times New Roman", serif;
+  --font-mono: "JetBrains Mono", "Cascadia Code", "Consolas", monospace;
+  --font-arabic: "Noto Naskh Arabic", "Amiri", "Segoe UI", serif;
+
+  --fs-xs: 11px;
+  --fs-sm: 12px;
+  --fs-md: 13px;
+  --fs-lg: 15px;
+
+  /* Radii */
+  --r-sm: 5px;
+  --r-md: 8px;
+  --r-lg: 12px;
+  --r-xl: 16px;
+
+  /* Motion */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur: 140ms;
+
+  /* Layout */
+  --menubar-h: 36px;
+  --tabbar-h: 38px;
+  --toolbar-h: 44px;
+  --statusbar-h: 26px;
+}
+
+/* ----------------------------------------------------------------- Light -- */
+:root,
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --app-bg: #f4f5f7;
+  --chrome-bg: #ffffff;
+  --chrome-bg-translucent: rgba(255, 255, 255, 0.8);
+  --surface: #ffffff;
+  --surface-2: #f7f8fa;
+  --elevated: #ffffff;
+  --hover: rgba(15, 23, 42, 0.05);
+  --active: rgba(15, 23, 42, 0.08);
+  --selection: rgba(79, 70, 229, 0.18);
+
+  --border: #e4e6eb;
+  --border-strong: #d3d6dd;
+
+  --text: #1b1d23;
+  --text-2: #4a4e58;
+  --text-muted: #888d99;
+  --text-inverse: #ffffff;
+
+  --accent: #4f46e5;
+  --accent-hover: #4338ca;
+  --accent-soft: rgba(79, 70, 229, 0.12);
+  --accent-text: #4f46e5;
+
+  --danger: #dc2626;
+  --danger-soft: rgba(220, 38, 38, 0.12);
+  --success: #16a34a;
+  --warning: #d97706;
+
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06), 0 1px 1px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 4px 16px rgba(15, 23, 42, 0.1), 0 1px 3px rgba(15, 23, 42, 0.06);
+  --shadow-lg: 0 12px 40px rgba(15, 23, 42, 0.16), 0 2px 8px rgba(15, 23, 42, 0.08);
+
+  --code-bg: #f3f4f7;
+  --highlight: #fff3b0;
+}
+
+/* ------------------------------------------------------------------ Dark -- */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --app-bg: #0c0d11;
+  --chrome-bg: #15171d;
+  --chrome-bg-translucent: rgba(21, 23, 29, 0.82);
+  --surface: #15171d;
+  --surface-2: #1b1e26;
+  --elevated: #20242d;
+  --hover: rgba(255, 255, 255, 0.06);
+  --active: rgba(255, 255, 255, 0.1);
+  --selection: rgba(129, 140, 248, 0.28);
+
+  --border: #262a33;
+  --border-strong: #333846;
+
+  --text: #e7e9ee;
+  --text-2: #b2b7c2;
+  --text-muted: #777d8a;
+  --text-inverse: #0c0d11;
+
+  --accent: #818cf8;
+  --accent-hover: #939dff;
+  --accent-soft: rgba(129, 140, 248, 0.16);
+  --accent-text: #a5adff;
+
+  --danger: #f87171;
+  --danger-soft: rgba(248, 113, 113, 0.16);
+  --success: #4ade80;
+  --warning: #fbbf24;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.45), 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.55), 0 2px 8px rgba(0, 0, 0, 0.4);
+
+  --code-bg: #1b1e26;
+  --highlight: #5c5320;
+}

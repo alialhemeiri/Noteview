@@ -1,0 +1,74 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Noteview",
+  "version": "0.1.0",
+  "identifier": "ae.aperion.noteview",
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "devUrl": "http://localhost:1420",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "withGlobalTauri": false,
+    "windows": [
+      {
+        "label": "main",
+        "title": "Noteview",
+        "width": 1180,
+        "height": 760,
+        "minWidth": 680,
+        "minHeight": 480,
+        "resizable": true,
+        "center": true,
+        "decorations": true,
+        "dragDropEnabled": true
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: blob: https: http: asset: http://asset.localhost; media-src 'self' data: blob: asset: http://asset.localhost; connect-src 'self' ipc: http://ipc.localhost",
+      "devCsp": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: blob: https: http: asset: http://asset.localhost; connect-src 'self' ipc: http://ipc.localhost ws://localhost:1420 http://localhost:1420"
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["msi", "nsis"],
+    "publisher": "Aperion",
+    "copyright": "© 2026 Aperion",
+    "category": "Productivity",
+    "shortDescription": "A modern Markdown-first editor",
+    "longDescription": "Noteview is a lightweight, beautiful replacement for Notepad with live Markdown preview, rendered LaTeX and tables, rich-text formatting, and first-class Arabic / RTL support.",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "fileAssociations": [
+      {
+        "ext": ["md", "markdown"],
+        "name": "Markdown Document",
+        "description": "Markdown document",
+        "role": "Editor"
+      },
+      {
+        "ext": ["txt"],
+        "name": "Text Document",
+        "description": "Plain text document",
+        "role": "Editor"
+      },
+      {
+        "ext": ["html", "htm"],
+        "name": "Noteview Rich Document",
+        "description": "Noteview rich-text document",
+        "role": "Editor"
+      }
+    ],
+    "windows": {
+      "webviewInstallMode": {
+        "type": "embedBootstrapper"
+      }
+    }
+  }
+}

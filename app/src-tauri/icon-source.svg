@@ -1,0 +1,36 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1024" y2="1024" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#5b63e8"/>
+      <stop offset="1" stop-color="#7c6cf0"/>
+    </linearGradient>
+    <linearGradient id="page" x1="300" y1="220" x2="724" y2="820" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#eef0fb"/>
+    </linearGradient>
+    <filter id="sh" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="26" flood-color="#1a1147" flood-opacity="0.28"/>
+    </filter>
+  </defs>
+
+  <rect width="1024" height="1024" rx="232" fill="url(#bg)"/>
+  <rect width="1024" height="1024" rx="232" fill="#000000" opacity="0.04"/>
+
+  <!-- document page with folded corner -->
+  <g filter="url(#sh)">
+    <path d="M300 250 H600 L724 374 V774 a20 20 0 0 1 -20 20 H300 a20 20 0 0 1 -20 -20 V270 a20 20 0 0 1 20 -20 Z" fill="url(#page)"/>
+    <path d="M600 250 L724 374 H620 a20 20 0 0 1 -20 -20 Z" fill="#cfd4f3"/>
+  </g>
+
+  <!-- text lines -->
+  <g fill="#5b63e8" opacity="0.85">
+    <rect x="356" y="452" width="312" height="26" rx="13"/>
+    <rect x="356" y="528" width="312" height="26" rx="13"/>
+    <rect x="356" y="604" width="196" height="26" rx="13"/>
+  </g>
+
+  <!-- accent: a small sigma-like math mark -->
+  <path d="M600 600 h64 v18 h-40 l30 34 -30 34 h40 v18 h-64 v-16 l30 -36 -30 -36 z" fill="#c9a96e" opacity="0.0"/>
+  <circle cx="664" cy="686" r="40" fill="#5b63e8"/>
+  <path d="M648 668 h32 v10 h-20 l16 16 -16 16 h20 v10 h-32 v-9 l15 -17 -15 -17 z" fill="#ffffff"/>
+</svg>

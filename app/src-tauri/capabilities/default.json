@@ -1,0 +1,13 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "Capabilities for Noteview windows (least privilege — only what the webview calls).",
+  "windows": ["main", "win-*"],
+  "permissions": [
+    "core:default",
+    "core:event:default",
+    "core:window:allow-set-title",
+    "core:window:allow-close",
+    "dialog:default"
+  ]
+}
